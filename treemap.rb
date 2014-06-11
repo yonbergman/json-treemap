@@ -57,17 +57,22 @@ class TreemapConverter
 
 end
 
-class Convert < Thor
-  desc "treemap", "convert json file to treemap format"
+class Treemap < Thor
+  desc "convert", "convert json file to treemap format"
   option :input, :aliases => '-i', :required => true
   option :output, :aliases => '-o', :required => false, :default => "treemap.json"
   option :max_depth, :aliases => '-d', :type => :numeric, :default => 4
-  def treemap
+  def convert
     puts "Converting #{options[:input]} to treemap format"
     data = JSON.parse(open(options[:input]).read())
     output = TreemapConverter.new(max_depth: options[:max_depth]).convert(data)
     open(options[:output], 'w').write(output.to_json)
     puts "Done saved to #{options[:output]}"
   end
+
+  desc 'show', 'open the browser and shows the treemap'
+  def show()
+    system "rackup"
+  end
 end
-Convert.start(ARGV)
+Treemap.start(ARGV)
