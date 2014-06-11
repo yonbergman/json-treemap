@@ -2,7 +2,7 @@
 
 A small tool to help you debug your JSON files, find out where the mass of your node are.
 
-![]()
+![](https://raw.githubusercontent.com/yonbergman/json-treemap/master/screenshot.png)
 
 ## Installation
 
@@ -12,7 +12,7 @@ Clone this repo, and run `bundle install`
 
 To see an example convert the provided `example.json` from Rotten Tomatoes run the following commands
 
-```shell
+```sh
 ./treemap.rb convert -i example.json
 ./treemap.rb show
 ```
